@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: amazon-mongo-analytics
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.1
+      - key: MONGODB_DB
+        value: amazonDB
+      - key: MONGODB_URI
+        sync: false
